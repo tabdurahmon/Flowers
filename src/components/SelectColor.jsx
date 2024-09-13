@@ -23,7 +23,7 @@ export default function SelectColor() {
     flowers && (
       <div>
         <Label onClick={handleFocus} className="ml-2">
-          Rangni*
+          Rangni tanlang*
         </Label>
         <Select
           value={value}
@@ -34,7 +34,7 @@ export default function SelectColor() {
           <SelectTrigger className="w-[180px]">
             <SelectValue>
               {" "}
-              <div className="flex items-center gap-2">
+              <div className="items-center gap-2">
                 <span
                   style={{ backgroundColor: value }}
                   className="inline-block h-4 w-4 rounded-full"

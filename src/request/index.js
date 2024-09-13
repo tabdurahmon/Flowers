@@ -37,7 +37,7 @@ export const login = async (data) => {
 };
 
 export const getFlowers = async (token) => {
-  const res = await fetch(BASE_URL + "/gullar", {
+  const res = await fetch(BASE_URL + "/Flowers", {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,

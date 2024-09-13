@@ -7,7 +7,6 @@ import { UpdateIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useAppStore } from "../lib/zustand";
-import spinFlower from "/flower.png";
 
 export default function Login() {
   const [loadin, setLoading] = useState(false);
