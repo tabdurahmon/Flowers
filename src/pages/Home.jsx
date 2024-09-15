@@ -14,6 +14,7 @@ import {
 import { PlusIcon, UpdateIcon } from "@radix-ui/react-icons";
 import { Button } from "../components/ui/button";
 import AddNewItemModal from "../components/AddNewItemModal";
+import PaginationDemo from "../components/PaginationDemo";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -49,46 +50,57 @@ export default function Home() {
       <div className="base-container">
         <div className="mb-5 flex items-center justify-between border-b py-5">
           <h2 className="h2">Boshqaruv paneli</h2>
-          <Button onClick={setAddItemModal}>
+
+          <Button onClick={setAddItemModal} disabled={flowers ? false : true}>
             Qo'shish
             <PlusIcon className="ml-2" />
           </Button>
         </div>
-        <Table>
-          {flowers && <TableCaption>Gullar haqida ma'lumot.</TableCaption>}
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[100px]">Id</TableHead>
-              <TableHead>Gul Nomi</TableHead>
-              <TableHead>Turkumi</TableHead>
-              <TableHead>Rangi</TableHead>
-              <TableHead className="text-right">Narxi</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {flowers?.map(({ name, id, category, color, price }) => {
-              return (
-                <TableRow key={id}>
-                  <TableCell className="font-medium">{id}</TableCell>
-                  <TableCell>{name}</TableCell>
-                  <TableCell>{category}</TableCell>
-                  <TableCell>
-                    {" "}
-                    <span
-                      style={{ backgroundColor: color }}
-                      className="block h-4 w-4 rounded-full border"
-                    ></span>
-                  </TableCell>
-                  <TableCell className="text-right">$ {price}</TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-        {loading && (
-          <div className="mt-60 flex w-full items-center justify-center gap-3 font-bold">
-            <UpdateIcon className="animate-spin" />
-            <h3>Yuklanmoqda...</h3>
+        <div className="mb-5">
+          <Table>
+            {flowers && <TableCaption>Gullar haqida ma'lumot.</TableCaption>}
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[100px]">Id</TableHead>
+                <TableHead>Gul Nomi</TableHead>
+                <TableHead>Turkumi</TableHead>
+                <TableHead>Rangi</TableHead>
+                <TableHead className="text-right">Narxi</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {flowers?.map(({ name, id, category, color, price }) => {
+                return (
+                  <TableRow key={id}>
+                    <TableCell className="font-medium">{id}</TableCell>
+                    <TableCell>{name}</TableCell>
+                    <TableCell>{category}</TableCell>
+                    <TableCell>
+                      {" "}
+                      <span
+                        style={{ backgroundColor: color }}
+                        className="block h-4 w-4 rounded-full border"
+                      ></span>
+                    </TableCell>
+                    <TableCell className="text-right">
+                      {price}
+                      {" so'm"}
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+          {loading && (
+            <div className="mt-60 flex w-full items-center justify-center gap-3 font-bold">
+              <UpdateIcon className="animate-spin" />
+              <h3>Yuklanmoqda...</h3>
+            </div>
+          )}
+        </div>
+        {flowers && (
+          <div className="mb-5">
+            <PaginationDemo />
           </div>
         )}
       </div>

@@ -26,15 +26,15 @@ export default function SelectColor() {
           Rangni tanlang*
         </Label>
         <Select
-          value={value}
+          name="color"
           onValueChange={setValue}
           open={open}
           onOpenChange={setOpen}
         >
           <SelectTrigger className="w-[180px]">
-            <SelectValue>
+            <SelectValue placeholder="Rangni tanlang">
               {" "}
-              <div className="items-center gap-2">
+              <div className="flex items-center gap-2">
                 <span
                   style={{ backgroundColor: value }}
                   className="inline-block h-4 w-4 rounded-full"

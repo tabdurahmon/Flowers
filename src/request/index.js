@@ -52,3 +52,17 @@ export const getFlowers = async (token) => {
     throw new Error("Nimadir hatolik bo'ldi");
   }
 };
+
+export async function uploadImage(image) {
+  const formData = new FormData();
+  FormData.append("file", image);
+  const res = await fetch(BASE_URL + "/upload", {
+    method: "POST",
+    body: formData,
+  });
+  if (res.status === 400)
+    throw Error("Rasm xajmi 5mbdan jop bolishi mumkin emas");
+
+  if (res.status === 200 || res.status === 201) return res.text();
+  else throw new Error("Nimadur xatolik bo'ldi");
+}

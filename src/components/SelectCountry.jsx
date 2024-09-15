@@ -24,7 +24,6 @@ import { Label } from "@/components/ui/label";
 
 export function SelectCountry() {
   const flowers = useAppStore((state) => state.flowers);
-  console.log(flowers);
   const country = flowers && collectItem(flowers, "country");
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
@@ -32,6 +31,7 @@ export function SelectCountry() {
   return (
     flowers && (
       <div className="flex w-full flex-col gap-1">
+        <input type="text" className="sr-only" name="country" value={value} />
         <Label className="ml-2" onClick={() => setOpen(!open)}>
           Hudud*
         </Label>

@@ -16,14 +16,12 @@ export default function LifeTime() {
         <Label className="mb-1 ml-2">Davr*</Label>
         <div className="flex gap-3">
           <Input
-            placeholder="Darvir kiriting"
+            placeholder="Darvrni kiriting"
             className="w-full"
-            type="number"
+            type="text"
+            name="lifetime"
           />
           <Select>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Davir davomiyligini tanlang..." />
-            </SelectTrigger>
             <SelectContent>
               {periods.map((period) => {
                 return (

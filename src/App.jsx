@@ -8,6 +8,7 @@ import ProtectedRoutes from "./routes/ProtectedRoutes";
 import Home from "./pages/Home";
 import Mainlayout from "./layout/Mainlayout";
 import { useAppStore } from "./lib/zustand";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export default function App() {
   const admin = useAppStore((state) => state.admin);

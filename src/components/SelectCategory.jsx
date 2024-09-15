@@ -9,6 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
+import { Value } from "@radix-ui/react-select";
 
 export default function SelectCategory() {
   const flowers = useAppStore((state) => state.flowers);
@@ -24,7 +25,7 @@ export default function SelectCategory() {
         <Label onClick={handleFocus} className="ml-2">
           Turkumni tanlang
         </Label>
-        <Select open={open} onOpenChange={setOpen}>
+        <Select name="category" open={open} onOpenChange={setOpen}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Turkumni tanlang" />
           </SelectTrigger>
