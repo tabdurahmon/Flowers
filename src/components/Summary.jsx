@@ -4,7 +4,6 @@ import { Label } from "@/components/ui/label";
 import { summaryLimit } from "../lib/my-utils";
 
 export default function Summary() {
-  // const [limit, setLimit] = useState(0);
   const [value, setValue] = useState("");
 
   function writer(e) {
