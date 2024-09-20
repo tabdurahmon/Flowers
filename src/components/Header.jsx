@@ -11,7 +11,7 @@ export default function Header() {
         <h2 className="h2 ml-3">Gullar</h2>
         <Button
           onClick={() => {
-            const checker = confirm("Tizimdan chiqmoqchimisiz?🤔");
+            const checker = confirm("Tizimdan chiqmoqchimisiz?");
 
             checker && setAdmin(null);
           }}
