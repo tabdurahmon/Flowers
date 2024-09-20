@@ -18,9 +18,9 @@ export default function UploadImage({ outsideImg }) {
       setValue(image);
     } else {
       if (image.size >= allowImageSize) {
-        toast.error("Rasim hajimi 5mbdan kichik bo'lishi kerak!");
+        toast.error("Rasm hajimi 5mbdan kichik bo'lishi kerak!");
       } else {
-        toast.loading("Rasim yuklanmoqda...");
+        toast.loading("Rasm yuklanmoqda...");
         uploadImage(image)
           .then((res) => {
             setValue(res);
@@ -42,7 +42,7 @@ export default function UploadImage({ outsideImg }) {
         className="sr-only"
       />
 
-      <Label className="ml-2">Rasim Yuklang..</Label>
+      <Label className="ml-2">Rasm Yuklang..</Label>
       <Tabs defaultValue="local" className="mb-2 w-full">
         <TabsList className="w-full">
           <TabsTrigger className="w-full" value="local">
@@ -78,7 +78,7 @@ export default function UploadImage({ outsideImg }) {
             <Input
               ref={urlInput}
               id="url"
-              placeholder=" Rasimni havolasini kiriting"
+              placeholder=" Rasmni havolasini kiriting"
               className="w-full"
               type="url"
             />
@@ -113,7 +113,7 @@ export default function UploadImage({ outsideImg }) {
           }}
           onError={() => {
             toast.warning(
-              "Rasimni yuklash imkoni bo'lmadi, qayta urinib ko'rin!",
+              "Rasmni yuklash imkoni bo'lmadi, qayta urinib ko'rin!",
             );
             setValue(
               "https://cdn-icons-png.flaticon.com/128/10085/10085271.png",
