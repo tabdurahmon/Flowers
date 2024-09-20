@@ -1,6 +1,7 @@
 import { LogOutIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAppStore } from "../lib/zustand";
+import DarkMode from "./DarkMode";
 
 export default function Header() {
   const setAdmin = useAppStore((state) => state.setAdmin);
@@ -9,6 +10,7 @@ export default function Header() {
     <div className="border-b py-3">
       <div className="base-container flex items-center justify-between py-5">
         <h2 className="h2 ml-3">Gullar</h2>
+        <DarkMode />
         <Button
           onClick={() => {
             const checker = confirm("Tizimdan chiqmoqchimisiz?");
