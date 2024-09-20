@@ -12,7 +12,7 @@ const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav
     role="navigation"
     aria-label="pagination"
-    className={cn("flex w-full justify-end px-10", className)}
+    className={cn("flex w-full justify-center px-10", className)}
     {...props}
   />
 );

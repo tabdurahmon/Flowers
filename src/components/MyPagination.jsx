@@ -24,7 +24,7 @@ export function MyPagination({ setSkip, total, pageCount, skip }) {
                   } else return 0;
                 });
               }}
-              text="Avvalgi"
+              text="Oldingi"
               href="#"
             />
           </PaginationItem>

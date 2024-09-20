@@ -3,6 +3,7 @@ export default function Footer() {
     <div className="border-t">
       <div className="base-container flex justify-center py-3">
         <div className="flex items-center gap-1">
+          Powered by
           <a
             className="font-medium tracking-wide hover:underline"
             target="blank"
@@ -10,7 +11,6 @@ export default function Footer() {
           >
             JSON API
           </a>{" "}
-          yordamida qurilgan App
         </div>
       </div>
     </div>

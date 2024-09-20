@@ -262,18 +262,12 @@ export default function Home() {
               })}
             </TableBody>
           </Table>
-          {flowers && (
-            <MyPagination
-              setSkip={setSkip}
-              total={total}
-              skip={skip}
-              pageCount={Math.ceil(total / limit)}
-            />
-          )}
         </div>
 
+        <MyPagination setSkip={setSkip} total={total} skip={skip} />
+
         {loading && (
-          <div className="mt-60 flex w-full items-center justify-center gap-3 font-bold">
+          <div className="mt-50 flex w-full items-center justify-center gap-3 font-bold">
             <UpdateIcon className="animate-spin" />
             <h3>Yuklanmoqda...</h3>
           </div>

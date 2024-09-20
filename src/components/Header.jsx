@@ -7,7 +7,7 @@ export default function Header() {
 
   return (
     <div className="border-b py-3">
-      <div className="base-container mb-5 flex items-center justify-between border-b py-5">
+      <div className="base-container flex items-center justify-between py-5">
         <h2 className="h2 ml-3">Gullar</h2>
         <Button
           onClick={() => {
