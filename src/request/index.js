@@ -16,6 +16,8 @@ export const refreshToken = async (token) => {
   } else {
     throw new Error("Nimadir hatolik bo'ldi");
   }
+
+  console.log(res);
 };
 
 export const login = async (data) => {
@@ -36,8 +38,18 @@ export const login = async (data) => {
   }
 };
 
-export const getFlowers = async (token) => {
-  const res = await fetch(BASE_URL + "/Flowers", {
+export const getFlowers = async (token, { skip, limit }, isFiltered) => {
+  const query = new URLSearchParams(`skip=${skip}&limit=${limit}`);
+
+  if (isFiltered) {
+    for (const key in isFiltered) {
+      if (isFiltered[key]) {
+        query.append(key, isFiltered[key]);
+      }
+    }
+  }
+
+  const res = await fetch(BASE_URL + "/Flowers?" + query, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
@@ -53,16 +65,76 @@ export const getFlowers = async (token) => {
   }
 };
 
-export async function uploadImage(image) {
+export const uploadImage = async (image) => {
   const formData = new FormData();
-  FormData.append("file", image);
+
+  formData.append("file", image);
+
   const res = await fetch(BASE_URL + "/upload", {
     method: "POST",
     body: formData,
   });
-  if (res.status === 400)
-    throw Error("Rasm xajmi 5mbdan jop bolishi mumkin emas");
 
-  if (res.status === 200 || res.status === 201) return res.text();
-  else throw new Error("Nimadur xatolik bo'ldi");
-}
+  if (res.status === 200 || res.status === 201) {
+    return await res.text();
+  } else {
+    throw new Error("Nimadir hatolik bo'ldi");
+  }
+};
+export const sendFlower = async (token, flower) => {
+  const res = await fetch(BASE_URL + "/Flowers", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(flower),
+  });
+
+  if (res.status === 200 || res.status === 201) {
+    return "Ma'lumot muvaffaqiyatli qo'shildi";
+  } else if (res.status === "403") {
+    throw new Error("403");
+  } else {
+    throw new Error("Nimadir hato ketti!");
+  }
+};
+
+export const deleteFlower = async (token, id) => {
+  console.log("deletedID", id, BASE_URL + "/Flowers/" + id);
+
+  const res = await fetch(BASE_URL + "/Flowers/" + id, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (res.status === 200 || res.status === 201) {
+    return "Ma'lumot muvaffaqiyatli o'chirildi";
+  } else if (res.status === 403) {
+    throw new Error("403");
+  } else {
+    throw new Error("Nimadir hato ketti!");
+  }
+};
+
+export const editFlower = async (token, flower) => {
+  const res = await fetch(BASE_URL + "/Flowers/" + flower.id, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(flower),
+  });
+
+  if (res.status === 200 || res.status === 201) {
+    return "Ma'lumot muvaffaqiyatli yangilandi";
+  } else if (res.status === "403") {
+    throw new Error("403");
+  } else {
+    throw new Error("Nimadir hato ketti!");
+  }
+};

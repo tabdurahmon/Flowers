@@ -35,12 +35,15 @@ export const validation = (obj) => {
       errorMessage = errors[key];
     }
   }
+
   return { checker, errorMessage };
 };
 
-export const BASE_URL = "https://json-api.uz/api/project/Flowers-11";
+export const findObj = (array, id) => {
+  return array.find((element) => element.id === id);
+};
 
+export const BASE_URL = "https://json-api.uz/api/project/Flowers-11";
 export const allowImageSize = 5_242_880;
-export const periods = ["kun", "hafta"];
 export const summaryLimit = 200;
-export const limitSkip = 5;
+export const limit = 10;

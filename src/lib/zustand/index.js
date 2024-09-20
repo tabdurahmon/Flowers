@@ -4,6 +4,7 @@ export const useAppStore = create((set) => ({
   admin: JSON.parse(localStorage.getItem("admin")) || null,
   flowers: null,
   addItemModal: false,
+  editModal: false,
   setAdmin: (admin) =>
     set(() => {
       if (admin) {
@@ -11,7 +12,7 @@ export const useAppStore = create((set) => ({
       } else {
         localStorage.removeItem("admin");
       }
-      return { admin };
+      return { admin, flowers: null };
     }),
   setFlowers: (flowers) =>
     set(() => {
@@ -19,4 +20,5 @@ export const useAppStore = create((set) => ({
     }),
   setAddItemModal: () =>
     set((state) => ({ addItemModal: !state.addItemModal })),
+  setEditModal: () => set((state) => ({ editModal: !state.editModal })),
 }));
